@@ -52,13 +52,15 @@
 
         let xhr = new XMLHttpRequest();
 
-        xhr.onreadystatechange = function() {
+       /* xhr.onreadystatechange = function() {
             if (xhr.readyState == XMLHttpRequest.DONE) {
                 console.log(xhr.response);
             }
-        }
-        xhr.open("POST", "https://gatewayt.moneris.com/chkt/request/request.php", true);
+        }*/
+        xhr.open("POST", "https://gatewayt.moneris.com/chkt/request/request.php", false);
         xhr.send(preloadJson);
+
+        myCheckout.startCheckout("");
     
         
     }
