@@ -33,12 +33,12 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
 <script>
-    //MCO : Checkout ALIAS: MonerisTest2323 ID: chktCDCXRtore3
+    //MCO : Checkout ALIAS: TestMonerisStore ID: chkt98UQJ06840
 
     /*Parameters for establishing MCO transaction stored as JSON object.
     environment: must be 'qa' for dev environment.
     */
-    let preloadString = '{ "store_id":"monca06840", "api_token":"aiDKR2wLcv9ny1aZkVA3",  "checkout_id":"chktCDCXRtore3", "txn_total":"5.00", "environment":"qa", "action":"preload"}'
+    let preloadString = '{ "store_id":"monca06840", "api_token":"aiDKR2wLcv9ny1aZkVA3",  "checkout_id":"chkt98UQJ06840", "txn_total":"5.00", "environment":"qa", "action":"preload"}'
     const preloadJson = JSON.parse(preloadString);
 
     const button = document.getElementById("monerisButton");
@@ -46,8 +46,8 @@
     
     function showCheckout() {
 
+        //Necessary setup for MCO, initialize, mode, set div, and set callbacks (callbacks mandatory for MCO object)
         var myCheckout = new monerisCheckout();
-
         myCheckout.setMode("qa");
         myCheckout.setCheckoutDiv("monerisCheckout");
         myCheckout.setCallback("page_loaded", myPageLoad);
@@ -56,23 +56,21 @@
         myCheckout.setCallback("payment_receipt", myPaymentReceipt);
         myCheckout.setCallback("payment_complete", myPaymentComplete);
 
+        //Send POST request, request readystate must change to done to ensure ticket number is received before starting checkout.
         let xhr = new XMLHttpRequest();
-
-       /* xhr.onreadystatechange = function() {
+        xhr.onreadystatechange = function() {
             if (xhr.readyState == XMLHttpRequest.DONE) {
                 console.log(xhr.response);
+                //Retrieves and displays the Checkout view, ticket number from response must be passed through startCheckout parameter.
+                myCheckout.startCheckout("");
             }
-        }*/
-        xhr.open("POST", "https://gatewayt.moneris.com/chkt/request/request.php", false);
+        }
+        xhr.open("POST", "https://5269ebc3-65ec-4522-a91f-90c336d10b94.mock.pstmn.io/https://gatewayt.moneris.com/chkt/request/request.php", false);
         xhr.send(preloadJson);
-
-        myCheckout.startCheckout("");
     
         
     }
-    function ajaxPost() {
-
-    }
+    //Empty callback functions, to be implemented after transaction implementation is finalized.
     function myPageLoad() {
 
     }
