@@ -2,8 +2,6 @@
 <html lang="en">
 
 <head>
-
-    <!-- Required meta tags -->
     <meta charset="utf-8" />
 
     <title>
@@ -15,13 +13,16 @@
 </head>
 
 <body>
+    <!--Div contains Moneris MCO view when checkout is initialized-->
     <div id="outerDiv" style="width:400px; height:300px">
         <div id="monerisCheckout"></div>
     </div>
+    <!--Button used to call function that establishes MCO setup and sends POST request-->
     <input type="Button" id="monerisButton" value="Test">
 </body>
-
+<!--JS library import for MCO functionality-->
 <script src="https://gatewayt.moneris.com/chkt/js/chkt_v1.00.js"></script>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -32,9 +33,14 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
 <script>
-    //Checkout ALIAS: MonerisTest2323 ID: chktCDCXRtore3
-    let preloadString = '{ "store_id":"monca06840", "api_token":"aiDKR2wLcv9ny1aZkVA3",  "checkout_id":"chkt98UQJ06840", "txn_total":"5.00", "environment":"qa", "action":"preload"}'
+    //MCO : Checkout ALIAS: MonerisTest2323 ID: chktCDCXRtore3
+
+    /*Parameters for establishing MCO transaction stored as JSON object.
+    environment: must be 'qa' for dev environment.
+    */
+    let preloadString = '{ "store_id":"monca06840", "api_token":"aiDKR2wLcv9ny1aZkVA3",  "checkout_id":"chktCDCXRtore3", "txn_total":"5.00", "environment":"qa", "action":"preload"}'
     const preloadJson = JSON.parse(preloadString);
+
     const button = document.getElementById("monerisButton");
     button.addEventListener('click', showCheckout);
     
