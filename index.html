@@ -57,16 +57,16 @@
         myCheckout.setCallback("payment_complete", myPaymentComplete);
 
         //Send POST request, request readystate must change to done to ensure ticket number is received before starting checkout.
-        let xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == XMLHttpRequest.DONE) {
+        //let xhr = new XMLHttpRequest();
+        //xhr.onreadystatechange = function() {
+            //if (xhr.readyState == XMLHttpRequest.DONE) {
                 console.log(xhr.response);
                 //Retrieves and displays the Checkout view, ticket number from response must be passed through startCheckout parameter.
-                myCheckout.startCheckout(xhr.data(ticket));
-            }
-        }
-        xhr.open("POST", "https://6f0d1f8e-0a4d-4130-95b9-cc4e21a7ec68.mock.pstmn.io/https://gatewayt.moneris.com/chkt/request/request.php", true);
-        xhr.send();
+                myCheckout.startCheckout(xhr.data("1652962382SpHKMGL6Z5GmwItBKIjhJ2CA8MgHMT"));
+           // }
+       // }
+       // xhr.open("POST", "https://6f0d1f8e-0a4d-4130-95b9-cc4e21a7ec68.mock.pstmn.io/https://gatewayt.moneris.com/chkt/request/request.php", true);
+       // xhr.send();
     
         
     }
