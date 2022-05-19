@@ -57,16 +57,16 @@
         myCheckout.setCallback("payment_complete", myPaymentComplete);
 
         //Send POST request, request readystate must change to done to ensure ticket number is received before starting checkout.
-        let xhr = new XMLHttpRequest();
+        //let xhr = new XMLHttpRequest();
         //xhr.onreadystatechange = function() {
             //if (xhr.readyState == XMLHttpRequest.DONE) {
-                //console.log(xhr.response);
+            //    console.log(xhr.response);
                 //Retrieves and displays the Checkout view, ticket number from response must be passed through startCheckout parameter.
-                //myCheckout.startCheckout("16529634224oKp93Sn6u56Yfl4U8Y0bohvKivr5T");
+                myCheckout.startCheckout("16529634224oKp93Sn6u56Yfl4U8Y0bohvKivr5T");
             //}
         //}
-        xhr.open("POST", "https://afternoon-earth-17643.herokuapp.com/", true);
-        xhr.send();
+        //xhr.open("POST", "**YOUR_WEB_SERVER**", true);
+        //xhr.send();
     
         
     }
