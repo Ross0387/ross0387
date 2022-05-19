@@ -62,10 +62,10 @@
             if (xhr.readyState == XMLHttpRequest.DONE) {
                 console.log(xhr.response);
                 //Retrieves and displays the Checkout view, ticket number from response must be passed through startCheckout parameter.
-                myCheckout.startCheckout("");
+                myCheckout.startCheckout(xhr.data(ticket));
             }
         }
-        xhr.open("POST", "https://535c48d1-30b5-4a5b-a3e2-44954c35a314.mock.pstmn.io", false);
+        xhr.open("GET", "https://535c48d1-30b5-4a5b-a3e2-44954c35a314.mock.pstmn.io", true);
         //xhr.send(preloadJson);
     
         
