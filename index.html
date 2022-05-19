@@ -57,7 +57,7 @@
         myCheckout.setCallback("payment_complete", myPaymentComplete);
 
         //Send POST request, request readystate must change to done to ensure ticket number is received before starting checkout.
-        //let xhr = new XMLHttpRequest();
+        let xhr = new XMLHttpRequest();
         //xhr.onreadystatechange = function() {
             //if (xhr.readyState == XMLHttpRequest.DONE) {
                 //console.log(xhr.response);
