@@ -57,16 +57,16 @@
         myCheckout.setCallback("payment_complete", myPaymentComplete);
 
         //Send POST request, request readystate must change to done to ensure ticket number is received before starting checkout.
-        //let xhr = new XMLHttpRequest();
+        let xhr = new XMLHttpRequest();
         //xhr.onreadystatechange = function() {
             //if (xhr.readyState == XMLHttpRequest.DONE) {
             //    console.log(xhr.response);
                 //Retrieves and displays the Checkout view, ticket number from response must be passed through startCheckout parameter.
-                myCheckout.startCheckout("1652990086HtHzHsilFr0FDu2NREbdVJS4mpdudT");
+                //myCheckout.startCheckout("1652994000SHOeMicmO12ww82SwKOmJ8YPaEy9dT");
             //}
         //}
-        //xhr.open("GET", "https://afternoon-earth-17643.herokuapp.com:5000", true);
-        //xhr.send();
+        xhr.open("GET", "https://afternoon-earth-17643.herokuapp.com", true);
+        xhr.send();
     
         
     }
