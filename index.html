@@ -16,8 +16,8 @@
     <!--Div contains Moneris MCO view when checkout is initialized-->
     <div id="monerisCheckout"></div>
     <!--Button used to call function that establishes MCO setup and sends POST request-->
-    <button onClick="sendRequest('checkoutSize=fs&checkoutConfig=min&amount=5.00&language=en')">5$MinEN</button>
-    <button onClick="sendRequest('checkoutSize=fs&checkoutConfig=min&amount=5.00&language=fr')">5$MinFR</button>
+    <button onClick="sendRequest('{\'checkout_size\':\'fs\', \'checkout_config\':\'min\', \'amount\':\'5.00\', \'language\':\'en\'}')">5$MinEN</button>
+    <button onClick="sendRequest('{\'checkout_size\':\'fs\', \'checkout_config\':\'min\', \'amount\':\'5.00\', \'language\':\'fr\'}')">5$MinFR</button>
     <button onClick="showCheckout()">Confirm</button>
 </body>
 <!--JS library import for MCO functionality-->
@@ -38,6 +38,7 @@
     /*Parameters for establishing MCO transaction stored as JSON object.
     environment: must be 'qa' for dev environment.
     */
+    //'{"checkout_size":"fs", "checkout_config":"min", "amount":"5.00", "language":"en"}'
     //let preloadString = '{ "store_id":"monca06840", "api_token":"aiDKR2wLcv9ny1aZkVA3",  "checkout_id":"chkt98UQJ06840", "txn_total":"5.00", "environment":"qa", "action":"preload"}'
     //const preloadJson = JSON.parse(preloadString);
     var myCheckout = new monerisCheckout();
@@ -55,7 +56,7 @@
         xhr.send();
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
-                console.log(xhr.responseText);
+                console.log(JSON.stringify(JSON.parse(xhr.responseText).ticket).replaceAll("\"", ""));
                 //Necessary setup for MCO, initialize, mode, set div, and set callbacks (callbacks mandatory for MCO object)
 
                 myCheckout.startCheckout(JSON.stringify(JSON.parse(xhr.responseText).ticket).replaceAll("\"", ""));
