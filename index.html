@@ -51,13 +51,13 @@
     frButton.addEventListener('click', sendRequest);
 
     const confirmButton = document.getElementById("Confirm");
-    frButton.addEventListener('click', showCheckout);
+    confirmButton.addEventListener('click', showCheckout);
     
     function showCheckout() {
         let xhr = new XMLHttpRequest();
         xhr.open("GET", "https://afternoon-earth-17643.herokuapp.com", true);
         xhr.send();
-        //console.log(JSON.stringify(xhr.response));
+        console.log(JSON.stringify(xhr.response));
         //Necessary setup for MCO, initialize, mode, set div, and set callbacks (callbacks mandatory for MCO object)
         var myCheckout = new monerisCheckout();
         myCheckout.setMode("qa");
@@ -67,6 +67,7 @@
         myCheckout.setCallback("error_event", myErrorEvent);
         myCheckout.setCallback("payment_receipt", myPaymentReceipt);
         myCheckout.setCallback("payment_complete", myPaymentComplete);
+        myCheckout.showCheckout(xhr.response);
     }
 
     function sendRequest() {
