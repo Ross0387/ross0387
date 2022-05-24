@@ -45,13 +45,13 @@
     //const preloadJson = JSON.parse(preloadString);
 
     const enButton = document.getElementById("5$MinEN");
-    enButton.addEventListener('click', showCheckout);
+    enButton.addEventListener('click', sendRequest());
 
     const frButton = document.getElementById("5$MinFR");
-    frButton.addEventListener('click', showCheckout);
+    frButton.addEventListener('click', sendRequest());
 
     const confirmButton = document.getElementById("Confirm");
-    frButton.addEventListener('click', showCheckout);
+    frButton.addEventListener('click', showCheckout());
     
     function showCheckout() {
 
