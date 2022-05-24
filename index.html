@@ -54,7 +54,10 @@
     frButton.addEventListener('click', showCheckout);
     
     function showCheckout() {
-
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://afternoon-earth-17643.herokuapp.com", true);
+        xhr.send();
+        console.log(JSON.stringify(xhr.response));
         //Necessary setup for MCO, initialize, mode, set div, and set callbacks (callbacks mandatory for MCO object)
         var myCheckout = new monerisCheckout();
         myCheckout.setMode("qa");
