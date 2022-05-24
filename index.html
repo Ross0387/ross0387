@@ -43,9 +43,9 @@
     //const preloadJson = JSON.parse(preloadString);
 
     const enButton = document.getElementById("5$MinEN");
-    enButton.addEventListener('click', sendRequest);
+    enButton.addEventListener('click', sendRequest("checkoutSize=fs&checkoutConfig=min&amount=5.00&language=en"));
 
-    const frButton = document.getElementById("5$MinFR");
+    const frButton = document.getElementById("5$MinFR"("checkoutSize=fs&checkoutConfig=min&amount=5.00&language=fr"));
     frButton.addEventListener('click', sendRequest);
 
     const confirmButton = document.getElementById("Confirm");
@@ -74,7 +74,7 @@
         }
     }
 
-    function sendRequest() {
+    function sendRequest(params) {
         let xhr = new XMLHttpRequest();
         xhr.open("POST", "https://afternoon-earth-17643.herokuapp.com", true);
         xhr.send();
