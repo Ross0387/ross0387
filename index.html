@@ -20,7 +20,7 @@
     <!--Button used to call function that establishes MCO setup and sends POST request-->
     <input type="Button" id="5$MinEN" value="5$MinEN">
     <input type="Button" id="5$MinFR" value="5$MinFR">
-    
+
     <input type="Button" id="Confirm" value="Confirm">
 </body>
 <!--JS library import for MCO functionality-->
@@ -52,22 +52,26 @@
 
     const confirmButton = document.getElementById("Confirm");
     confirmButton.addEventListener('click', showCheckout);
-    
+
     function showCheckout() {
         let xhr = new XMLHttpRequest();
         xhr.open("GET", "https://afternoon-earth-17643.herokuapp.com", true);
         xhr.send();
-        console.log(JSON.stringify(xhr.response));
-        //Necessary setup for MCO, initialize, mode, set div, and set callbacks (callbacks mandatory for MCO object)
-        var myCheckout = new monerisCheckout();
-        myCheckout.setMode("qa");
-        myCheckout.setCheckoutDiv("monerisCheckout");
-        myCheckout.setCallback("page_loaded", myPageLoad);
-        myCheckout.setCallback("cancel_transaction", myCancelTransaction);
-        myCheckout.setCallback("error_event", myErrorEvent);
-        myCheckout.setCallback("payment_receipt", myPaymentReceipt);
-        myCheckout.setCallback("payment_complete", myPaymentComplete);
-        myCheckout.showCheckout(xhr.response);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                console.log(JSON.stringify(xhr.response));
+                //Necessary setup for MCO, initialize, mode, set div, and set callbacks (callbacks mandatory for MCO object)
+                var myCheckout = new monerisCheckout();
+                myCheckout.setMode("qa");
+                myCheckout.setCheckoutDiv("monerisCheckout");
+                myCheckout.setCallback("page_loaded", myPageLoad);
+                myCheckout.setCallback("cancel_transaction", myCancelTransaction);
+                myCheckout.setCallback("error_event", myErrorEvent);
+                myCheckout.setCallback("payment_receipt", myPaymentReceipt);
+                myCheckout.setCallback("payment_complete", myPaymentComplete);
+                myCheckout.startCheckout(JSON.stringify(response));
+            }
+        }
     }
 
     function sendRequest() {
