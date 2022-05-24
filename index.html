@@ -59,7 +59,7 @@
         xhr.send();
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
-                console.log(JSON.stringify(xhr.response.ticket));
+                console.log(xhr.responseText);
                 //Necessary setup for MCO, initialize, mode, set div, and set callbacks (callbacks mandatory for MCO object)
                 var myCheckout = new monerisCheckout();
                 myCheckout.setMode("qa");
@@ -69,7 +69,7 @@
                 myCheckout.setCallback("error_event", myErrorEvent);
                 myCheckout.setCallback("payment_receipt", myPaymentReceipt);
                 myCheckout.setCallback("payment_complete", myPaymentComplete);
-                myCheckout.startCheckout(JSON.stringify(xhr.response.ticket));
+                //myCheckout.startCheckout(JSON.stringify(JSON.parse(xhr.responseText).ticket));
             }
         }
     }
