@@ -67,7 +67,7 @@
                 myCheckout.setCallback("error_event", myErrorEvent);
                 myCheckout.setCallback("payment_receipt", myPaymentReceipt);
                 myCheckout.setCallback("payment_complete", myPaymentComplete);
-                myCheckout.startCheckout(JSON.stringify(JSON.parse(xhr.responseText).ticket).replace("\"", ""));
+                myCheckout.startCheckout(JSON.stringify(JSON.parse(xhr.responseText).ticket).replace("\""/g, ""));
             }
         }
     }
