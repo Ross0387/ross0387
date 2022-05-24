@@ -16,10 +16,9 @@
     <!--Div contains Moneris MCO view when checkout is initialized-->
     <div id="monerisCheckout"></div>
     <!--Button used to call function that establishes MCO setup and sends POST request-->
-    <input type="Button" id="5$MinEN" value="5$MinEN">
-    <input type="Button" id="5$MinFR" value="5$MinFR">
-
-    <input type="Button" id="Confirm" value="Confirm">
+    <button onClick="sendRequest('checkoutSize=fs&checkoutConfig=min&amount=5.00&language=en')">5$MinEN</button>
+    <button onClick="sendRequest('checkoutSize=fs&checkoutConfig=min&amount=5.00&language=fr')">5$MinFR</button>
+    <button onClick="showCheckout()">Confirm</button>
 </body>
 <!--JS library import for MCO functionality-->
 <script src="https://gatewayt.moneris.com/chkt/js/chkt_v1.00.js"></script>
@@ -41,16 +40,6 @@
     */
     //let preloadString = '{ "store_id":"monca06840", "api_token":"aiDKR2wLcv9ny1aZkVA3",  "checkout_id":"chkt98UQJ06840", "txn_total":"5.00", "environment":"qa", "action":"preload"}'
     //const preloadJson = JSON.parse(preloadString);
-
-    const enButton = document.getElementById("5$MinEN");
-    enButton.addEventListener('click', sendRequest("checkoutSize=fs&checkoutConfig=min&amount=5.00&language=en"));
-
-    const frButton = document.getElementById("5$MinFR");
-    frButton.addEventListener('click', sendRequest("checkoutSize=fs&checkoutConfig=min&amount=5.00&language=fr"));
-
-    const confirmButton = document.getElementById("Confirm");
-    confirmButton.addEventListener('click', showCheckout);
-
     var myCheckout = new monerisCheckout();
     myCheckout.setMode("qa");
     myCheckout.setCheckoutDiv("monerisCheckout");
