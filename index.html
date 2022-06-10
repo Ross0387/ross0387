@@ -68,6 +68,7 @@
         let xhr = new XMLHttpRequest();
         xhr.open("POST", "https://afternoon-earth-17643.herokuapp.com", true);
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
         xhr.send(params);
     }
     //Empty callback functions, to be implemented after transaction implementation is finalized.
